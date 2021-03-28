@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="brython.js"></script>
+    <script type="text/javascript" src="brython_stdlib.js"></script>
+    <meta name="description" content="数学简易计算器">
+    <meta name="author" content="邢栋">
+    <title>数学简易计算器</title>
+</head>
+
+<body onload="brython(1)">
+    <script type="text/python">
+        from browser import document, html
+        document <= html.H1("数学简易计算器")
+        calc = html.TABLE()
+        calc <= html.TR(html.TH(html.DIV("0", id="result",contenteditable=True), colspan=3) +
+                        html.TD("C"))
+        lines = ["789/", "456*", "123-", "0.=+"]
+
+        calc <= (html.TR(html.TD(x) for x in line) for line in lines)
+
+        document <= calc+html.HR()
+
+        result = document["result"] 
+
+        def action(event):
+            element = event.target
+            value = element.text
+            if value not in "=C":
+                if result.text in ["0", "错误"]:
+                    result.text = value
+                else:
+                    result.text = result.text + value
+            elif value == "C":
+                result.text = "0"
+            elif value == "=":
+                try:
+                    document <= result.text+html.BR()
+                    result.text = eval(result.text)
+                    result.text = int(result.text)
+                    result.text = str(result.text)
+                except: 
+                    result.text = "错误"
+
+        for button in document.select("td"):
+            button.bind("click", action)
+    </script>
+
+</script>
+    <style>
+        * {
+            font-family: sans-serif;
+            font-weight: normal;
+            font-size: 1.3em;
+        }
+
+        td {
+            background-color: white;
+            padding: 10px 30px 10px 30px;
+            border-radius: 1em;
+            text-align: center;
+            cursor: default;
+        }
+        td:hover{
+            background-color: rgb(204,204,204);
+        }
+
+        #result {
+            border-color: #000;
+            border-width: 1px;
+            border-style: solid;
+            padding: 10px 30px 10px 30px;
+            text-align: right;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</body>
+
+</html>
