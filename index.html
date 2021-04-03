@@ -14,8 +14,8 @@
     <script type="text/python">
         from browser import document, html
         document <= html.H1("数学简易计算器")
-        calc = html.TABLE()
-        calc <= html.TR(html.TH(html.DIV("0", id="result",contenteditable=True), colspan=3) +
+        calc = html.TABLE(align="center")
+        calc <= html.TR(html.TH(html.DIV("", id="result",contenteditable=True), colspan=3) +
                         html.TD("C"))
         lines = ["789/", "456*", "123-", "0.=+"]
 
@@ -34,13 +34,11 @@
                 else:
                     result.text = result.text + value
             elif value == "C":
-                result.text = "0"
+                result.text = ""
             elif value == "=":
                 try:
                     document <= result.text+html.BR()
                     result.text = eval(result.text)
-                    result.text = int(result.text)
-                    result.text = str(result.text)
                 except: 
                     result.text = "错误"
 
@@ -83,10 +81,11 @@
 
         a {
             text-decoration-line: none;
-            font-size: medium;
+            font-size: small;
         }
 
         a:hover {
+            font-size: medium;
             font-weight: bolder;
             text-decoration-line: underline;
         }
