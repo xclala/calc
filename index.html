@@ -21,7 +21,7 @@
 
         calc <= (html.TR(html.TD(x) for x in line) for line in lines)
 
-        document <= calc+html.HR()
+        document <= calc
 
         result = document["result"] 
 
@@ -37,8 +37,9 @@
                 result.text = ""
             elif value == "=":
                 try:
-                    document <= result.text+html.BR()
+                    a=result.text
                     result.text = eval(result.text)
+                    document <= a+"="+result.text+html.BR()
                 except: 
                     result.text = "错误"
 
@@ -47,6 +48,7 @@
     </script>
 
     </script>
+    <a href="https://xclala.github.io">🔙<br></a>
     <a href="qrcode.png">二维码</a>
     <style>
         * {
