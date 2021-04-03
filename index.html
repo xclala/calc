@@ -17,7 +17,7 @@
         calc = html.TABLE(align="center")
         calc <= html.TR(html.TH(html.DIV("", id="result",contenteditable=True), colspan=3) +
                         html.TD("C"))
-        lines = ["789/(", "456*)", "123-", "0.=+"]
+        lines = ["(789/", ")456*", "123-", "0.=+"]
 
         calc <= (html.TR(html.TD(x) for x in line) for line in lines)
 
