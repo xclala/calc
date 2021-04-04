@@ -5,19 +5,19 @@
     <meta charset="utf-8">
     <script type="text/javascript" src="brython.js"></script>
     <script type="text/javascript" src="brython_stdlib.js"></script>
-    <meta name="description" content="数学简易计算器">
+    <meta name="description" content="简易计算器">
     <meta name="author" content="邢栋">
-    <title>数学简易计算器</title>
+    <title>简易计算器</title>
 </head>
 
 <body onload="brython(1)">
     <script type="text/python">
         from browser import document, html
-        document <= html.H1("数学简易计算器")
+        document <= html.H1("简易计算器")
         calc = html.TABLE(align="center")
         calc <= html.TR(html.TH(html.DIV("", id="result",contenteditable=True), colspan=3) +
                         html.TD("C"))
-        lines = ["789/(", "456*)", "123-", "0.=+"]
+        lines = ["789/(&", "456*)|", "123->^", "0.=+<~"]
 
         calc <= (html.TR(html.TD(x) for x in line) for line in lines)
 
