@@ -13,7 +13,6 @@
 <body onload="brython(1)">
     <script type="text/python">
         from browser import document, html,alert
-        from math import *
         document <= html.H1("简易计算器")
         document <= html.P("乘方用<b>**</b>表示,除法向下取整用<b>//</b>表示")
         calc = html.TABLE(align="center")
@@ -94,13 +93,15 @@
             font-weight: bolder;
             text-decoration-line: underline;
         }
-        p{
+
+        p {
             font-size: x-small;
             text-align: center;
-            color:white;
+            color: white;
         }
-        p:hover{
-            color:red;
+
+        p:hover {
+            color: red;
         }
     </style>
 </body>
