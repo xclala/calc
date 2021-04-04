@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="zh">
 
 <head>
     <meta charset="utf-8">
@@ -12,12 +12,14 @@
 
 <body onload="brython(1)">
     <script type="text/python">
-        from browser import document, html
+        from browser import document, html,alert
+        from math import *
         document <= html.H1("简易计算器")
+        document <= html.P("乘方用<b>**</b>表示,除法向下取整用<b>//</b>表示")
         calc = html.TABLE(align="center")
         calc <= html.TR(html.TH(html.DIV("", id="result",contenteditable=True), colspan=3) +
                         html.TD("C"))
-        lines = ["789/(&", "456*)|", "123->^", "0.=+<~"]
+        lines = ["789/(&", "456*)|", "123->~", "0.=+<"]
 
         calc <= (html.TR(html.TD(x) for x in line) for line in lines)
 
@@ -42,6 +44,7 @@
                     document <= a+"="+result.text+html.BR()
                 except: 
                     result.text = "错误"
+                    alert("错误")
 
         for button in document.select("td"):
             button.bind("click", action)
@@ -49,7 +52,7 @@
 
     </script>
     <a href="https://xclala.github.io">🔙<br></a>
-    <a href="qrcode.png">二维码</a>
+    <a href="qrcode.png">二维码<br></a>
     <style>
         * {
             font-family: sans-serif;
@@ -90,6 +93,14 @@
             font-size: medium;
             font-weight: bolder;
             text-decoration-line: underline;
+        }
+        p{
+            font-size: x-small;
+            text-align: center;
+            color:white;
+        }
+        p:hover{
+            color:red;
         }
     </style>
 </body>
