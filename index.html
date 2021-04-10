@@ -44,6 +44,7 @@
                     result.text = eval(result.text)
                     document <= a+"="+result.text+html.BR()
                 except: 
+                    result.text = ""
                     alert("错误")
 
         for button in document.select("td"):
