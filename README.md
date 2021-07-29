@@ -1,3 +1,3 @@
 # calc
 
-brython简易 **计算器** 
+brython简易**计算器** 
