@@ -28,12 +28,12 @@
     <h1>简易计算器</h1>
     <p>乘方用<b>**</b>表示,除法向下取整用<b>//</b>表示</p>
     <script type="text/python">
-        from browser import document, html,alert
+        from browser import document, html, alert
         from math import *
         from random import randint as rand
         calc = html.TABLE(align="center")
         calc <= html.TR(html.TH(html.DIV("", id="result",contenteditable=True), colspan=3) +
-                        html.TD("C"))
+                        html.TD("X") + html.TD("C"))
         lines = ["789/(&", "456*)|", "123->~", "0.=+<"]
 
         calc <= (html.TR(html.TD(x) for x in line) for line in lines)
@@ -45,13 +45,15 @@
         def action(event):
             element = event.target
             value = element.text
-            if value not in "=C":
+            if value not in "=CX":
                 if result.text in ["0", "错误"]:
                     result.text = value
                 else:
-                    result.text = result.text + value
+                    result.text += value
             elif value == "C":
                 result.text = ""
+            elif value == "X":
+                result.text = result.text[:-1]
             elif value == "=":
                 try:
                     a=result.text
