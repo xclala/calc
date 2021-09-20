@@ -8,7 +8,8 @@
     <meta name="description" content="简易计算器">
     <meta name="author" content="邢栋">
     <title>简易计算器</title>
-    <link rel="icon" type="image/x-ico" href="https://xclala.github.io/favicon.ico">
+    <link rel="icon" type="image/x-ico" href="../favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
 
 <body onload="brython(1)" ontouchstart>
@@ -46,9 +47,9 @@
                 result.text = result.text[:-1]
             elif value == "=":
                 try:
-                    a=result.text
+                    a = result.text
                     result.text = eval(result.text)
-                    document <= a+"="+result.text+html.BR()
+                    document <= html.I(a+"="+result.text+html.BR())
                 except: 
                     result.text = ""
                     alert("错误")
@@ -69,6 +70,10 @@
         @media(prefers-color-scheme:dark) {
             body {
                 background-color: black;
+            }
+
+            i {
+                color: white;
             }
 
             p {
@@ -96,6 +101,10 @@
         @media(prefers-color-scheme:light) {
             body {
                 background-color: whitesmoke;
+            }
+
+            i {
+                color: black;
             }
 
             p {
