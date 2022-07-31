@@ -24,13 +24,12 @@
         <img src="../github.svg">
     </a>
     <h1>简易计算器</h1>
-    <p>乘方用<b>**</b>表示,除法向下取整用<b>//</b>表示,取余数用<b>%</b>表示。</p>
+    <p>本计算器可以在输入框输入python的内置函数和math库中的函数</p>
     <script type="text/python">
         from browser import document, html, alert
         from math import *
-        from random import randint as rand
         calc = html.TABLE(align="center")
-        calc <= html.TR(html.TH(html.DIV("", id="result",contenteditable=True), colspan=3) +
+        calc <= html.TR(html.TH(html.TEXTAREA("", id="result", contenteditable=True, rows=5), colspan=3) +
                         html.TD("←") + html.TD("C"))
         lines = ["789/(&", "456*)|", "123->~", "0.=+<"]
 
@@ -69,9 +68,7 @@
     <p></p>
     <style>
         * {
-            font-family: sans-serif;
-            font-weight: normal;
-            font-size: 1.3em;
+            font-size: 1.2em;
         }
 
         @media(prefers-color-scheme:dark) {
@@ -92,7 +89,7 @@
             }
 
             td {
-                background-color: rgba(255, 255, 255, 0);
+                background-color: black;
             }
 
             #result,
@@ -147,6 +144,7 @@
             border-style: solid;
             padding: 10px 30px 10px 30px;
             text-align: right;
+            font-size: 1em;
         }
 
         h1 {
